@@ -1,0 +1,132 @@
+include <stdio.h>
+
+int main() {
+    // Super Trunfo - Cidades do Brasil
+    // Jogo de cartas onde os jogadores comparam atributos de cidades brasileiras
+
+    int escolha, escolha2;
+    int resultado1 = 0, resultado2 = 0;
+
+    // Dados da carta 1
+    char estado1 = 'A';
+    char codigo1[] = "A01";
+    char nomeCidade1[] = "São Paulo";
+    int populacao1 = 12325000;
+    float area1 = 1521.11;
+    float pib1 = 699.28;
+    int pontosTuristicos1 = 50;
+
+    // Dados da carta 2
+    char estado2 = 'B';
+    char codigo2[] = "B02";
+    char nomeCidade2[] = "Rio de Janeiro";
+    int populacao2 = 6748000;
+    float area2 = 1200.25;
+    float pib2 = 300.50;
+    int pontosTuristicos2 = 30;
+
+    // Exibição das cartas
+    printf("=== Carta 1 ===\n");
+    printf("Estado: %c\n", estado1);
+    printf("Código: %s\n", codigo1);
+    printf("Cidade: %s\n", nomeCidade1);
+    printf("População: %d habitantes\n", populacao1);
+    printf("Área: %.2f km²\n", area1);
+    printf("PIB: R$ %.2f bilhões\n", pib1);
+    printf("Pontos Turísticos: %d\n", pontosTuristicos1);
+
+    printf("\n=== Carta 2 ===\n");
+    printf("Estado: %c\n", estado2);
+    printf("Código: %s\n", codigo2);
+    printf("Cidade: %s\n", nomeCidade2);
+    printf("População: %d habitantes\n", populacao2);
+    printf("Área: %.2f km²\n", area2);
+    printf("PIB: R$ %.2f bilhões\n", pib2);
+    printf("Pontos Turísticos: %d\n", pontosTuristicos2);
+
+    // Primeira comparação
+    printf("\n--- Escolha um atributo para comparar (1 a 4) ---\n");
+    printf("1. População\n2. Área\n3. PIB\n4. Pontos Turísticos\n");
+    printf("Escolha: ");
+    if (scanf("%d", &escolha) != 1) {
+        printf("Entrada inválida.\n");
+        return 1;
+    }
+
+    switch (escolha) {
+        case 1:
+            if (populacao1 > populacao2) resultado1++;
+            else if (populacao2 > populacao1) resultado2++;
+            printf("Resultado: %s venceu na população.\n", (populacao1 == populacao2) ? "Empate" : (populacao1 > populacao2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 2:
+            if (area1 > area2) resultado1++;
+            else if (area2 > area1) resultado2++;
+            printf("Resultado: %s venceu na área.\n", (area1 == area2) ? "Empate" : (area1 > area2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 3:
+            if (pib1 > pib2) resultado1++;
+            else if (pib2 > pib1) resultado2++;
+            printf("Resultado: %s venceu no PIB.\n", (pib1 == pib2) ? "Empate" : (pib1 > pib2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 4:
+            if (pontosTuristicos1 > pontosTuristicos2) resultado1++;
+            else if (pontosTuristicos2 > pontosTuristicos1) resultado2++;
+            printf("Resultado: %s venceu em pontos turísticos.\n", (pontosTuristicos1 == pontosTuristicos2) ? "Empate" : (pontosTuristicos1 > pontosTuristicos2) ? "Cidade 1" : "Cidade 2");
+            break;
+        default:
+            printf("Atributo inválido.\n");
+            return 1;
+    }
+
+    // Segunda comparação
+    printf("\n--- Escolha outro atributo diferente para comparar ---\n");
+    printf("1. População\n2. Área\n3. PIB\n4. Pontos Turísticos\n");
+    printf("Escolha: ");
+    if (scanf("%d", &escolha2) != 1) {
+        printf("Entrada inválida.\n");
+        return 1;
+    }
+
+    if (escolha2 == escolha) {
+        printf("Você escolheu o mesmo atributo. Reinicie o jogo.\n");
+        return 1;
+    }
+
+    switch (escolha2) {
+        case 1:
+            if (populacao1 > populacao2) resultado1++;
+            else if (populacao2 > populacao1) resultado2++;
+            printf("Resultado: %s venceu na população.\n", (populacao1 == populacao2) ? "Empate" : (populacao1 > populacao2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 2:
+            if (area1 > area2) resultado1++;
+            else if (area2 > area1) resultado2++;
+            printf("Resultado: %s venceu na área.\n", (area1 == area2) ? "Empate" : (area1 > area2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 3:
+            if (pib1 > pib2) resultado1++;
+            else if (pib2 > pib1) resultado2++;
+            printf("Resultado: %s venceu no PIB.\n", (pib1 == pib2) ? "Empate" : (pib1 > pib2) ? "Cidade 1" : "Cidade 2");
+            break;
+        case 4:
+            if (pontosTuristicos1 > pontosTuristicos2) resultado1++;
+            else if (pontosTuristicos2 > pontosTuristicos1) resultado2++;
+            printf("Resultado: %s venceu em pontos turísticos.\n", (pontosTuristicos1 == pontosTuristicos2) ? "Empate" : (pontosTuristicos1 > pontosTuristicos2) ? "Cidade 1" : "Cidade 2");
+            break;
+        default:
+            printf("Atributo inválido.\n");
+            return 1;
+    }
+
+    // Resultado final
+    printf("\n====== Resultado Final ======\n");
+    if (resultado1 > resultado2)
+        printf("🏆 Jogador da Carta 1 venceu o jogo!\n");
+    else if (resultado2 > resultado1)
+        printf("🏆 Jogador da Carta 2 venceu o jogo!\n");
+    else
+        printf("🤝 O jogo terminou empatado!\n");
+
+    return 0;
+}
